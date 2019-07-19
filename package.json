@@ -1,0 +1,22 @@
+{
+  "name": "tasks_app",
+  "version": "1.0.0",
+  "description": "The Complete Node.js Developer Course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigo-rufino/tasks_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigo-rufino/tasks_app/issues"
+  },
+  "homepage": "https://github.com/rodrigo-rufino/tasks_app#readme",
+  "dependencies": {
+    "mongodb": "^3.3.0-beta2"
+  }
+}
