@@ -79,31 +79,78 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true}, (error, client) => 
 
 
 
+    // console.log('\n====== FIND ======');
+    // db.collection('users').findOne({name: 'Spike'}, (error, user) => {
+    //     if (error) return console.log('Unable to fetch');
 
-    db.collection('users').findOne({name: 'Spike'}, (error, user) => {
-        if (error) return console.log('Unable to fetch');
+    //     console.log('\n===findOne');
+    //     console.log(user);
+    // });
+    // db.collection('users').findOne({_id: new ObjectID("5d321b66a7c4321c24902f86")}, (error, user) => {
+    //     if (error) return console.log('Unable to fetch');
 
-        console.log('\n===findOne');
-        console.log(user);
+    //     console.log('\n===findOne(id)');
+    //     console.log(user);
+    // });
+    // db.collection('users').find({ age: '23' }).toArray((error, users) => {
+    //     if (error) return console.log('Unable to fetch');
+
+    //     console.log('\n===find().toArray()');
+    //     console.log(users);
+    // });
+
+
+    // db.collection('users').find({ age: '23' }).count((error, count) => {
+    //     if (error) return console.log('Unable to fetch');
+
+    //     console.log('\n===find().count()');
+    //     console.log(count);
+    // });
+
+
+
+
+    // console.log('\n====== UPDATE ======');   
+    // db.collection('users').updateOne({
+    //     _id: new ObjectID("5d36031c3c522823403b5396")
+    // }, {
+    //     $set: {
+    //         name: 'Spike Spiegel',
+    //     }
+    // }).then((result) => {
+    //     console.log(result);
+    // }).catch((error) => {
+    //     console.log(error);
+    // });
+
+    // db.collection('tasks').updateMany({
+    //     completed: false
+    // }, {
+    //     $set: {
+    //         completed: true,
+    //     }
+    // }).then((result) => {
+    //     console.log(result);
+    // }).catch((error) => {
+    //     console.log(error);
+    // });
+
+
+
+    console.log('\n====== DELETE ======');
+    db.collection('users').deleteMany({
+        age: '23'
+    }).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
     });
-    db.collection('users').findOne({_id: new ObjectID("5d321b66a7c4321c24902f86")}, (error, user) => {
-        if (error) return console.log('Unable to fetch');
-
-        console.log('\n===findOne(id)');
-        console.log(user);
-    });
-    db.collection('users').find({ age: '23' }).toArray((error, users) => {
-        if (error) return console.log('Unable to fetch');
-
-        console.log('\n===find().toArray()');
-        console.log(users);
-    });
-
-
-    db.collection('users').find({ age: '23' }).count((error, count) => {
-        if (error) return console.log('Unable to fetch');
-
-        console.log('\n===find().count()');
-        console.log(count);
+    
+    db.collection('tasks').deleteOne({
+        description: 'Clean the house'
+    }).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
     });
 });
