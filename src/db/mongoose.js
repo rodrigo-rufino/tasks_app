@@ -42,7 +42,7 @@ const User = mongoose.model('User', {
         trim: true,
         validate(value) {
             if (value.toLowerCase().includes('password')) {
-                throw new Error('Weak password! Contains the word "password'.);
+                throw new Error('Weak password! Contains the word "password".');
             }
         }
     }
