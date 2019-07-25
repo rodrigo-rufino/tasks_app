@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-
-const User = mongoose.model('User', {
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -40,6 +39,17 @@ const User = mongoose.model('User', {
         }
     }
 });
+
+// here, function is used to be able to use _this_
+userSchema.pre('save', async function (next) {
+    const user = this;
+
+    console.log('AOOHOHO');
+
+    next();
+});
+
+const User = mongoose.model('User', userSchema);
 
 
 module.exports = User;
