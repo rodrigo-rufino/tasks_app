@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
     }]
 });
 
-// instance method
+// instance methods
 userSchema.methods.generateAuthToken =  async function () {
     const user =  this;
     const token = jwt.sign({_id: user._id.toString()}, 'taskapp_auth');
@@ -60,7 +60,19 @@ userSchema.methods.generateAuthToken =  async function () {
     return token;
 }
 
-// model method
+userSchema.methods.toJSON = function () {
+    // overrides toJSON method
+    const user = this;
+    const userObject = user.toObject();
+    
+    delete userObject.password;
+    delete userObject.tokens;
+
+    return userObject;
+}
+
+
+// model methods
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({email});
 
