@@ -8,17 +8,11 @@ router.post('/users', async (req, res) => {
 
     try {
         await user.save();
-        const token = await user.generateAuthToken(); 
-        res.status(201).send(user);
-    } catch (error) {
-        res.status(400).send(error);        
+        const token = await user.generateAuthToken();
+        res.status(201).send({ user, token });
+    } catch (e) {
+        res.status(400).send(e);
     }
-
-    // user.save().then(() => {
-    //     res.status(201).send(user);
-    // }).catch((error) => {
-    //     res.status(400).send(error);
-    // });
 });
 
 router.post('/users/login', async (req, res) => {
@@ -68,11 +62,7 @@ router.get('/users', auth, async (req, res) => {
 });
 
 router.get('/users/me', auth, async (req, res) => {
-    try {
-        res.status(201).send(req.user);
-    } catch (error) {
-        res.status(500).send();        
-    }
+        res.send(req.user);
 });
 
 // router.get('/users/:id', async (req, res) => {
